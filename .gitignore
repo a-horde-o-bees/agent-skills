@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+dist/
+build/
+.venv-python
+
+# Sandbox-skill worktrees — disposable substrate outputs
+.claude/worktrees/
+
+# Rebuild-skill workspace — extract / fresh-compose holding files
+tmp/
+
+# Auto-init DB backups awaiting schema reconciliation — non-empty means work in flight
+.claude/pre-sync/
+
+# Per-user manifest of skills installed via `npx skills` — downstream users curate their own
+.claude/installed-skills.json
+
+# Node toolchain for the markdown linter (package.json holds the dep manifest)
+node_modules/
