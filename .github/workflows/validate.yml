@@ -26,5 +26,22 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Setup uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+
       - name: Validate skills against spec and manifest
         run: python3 scripts/validate-skills.py
+
+      - name: Spec-validate published skills (skills-ref)
+        run: |
+          for d in skills/*/; do
+            uvx --from skills-ref agentskills validate "${d%/}"
+          done
+
+      - name: Run per-skill deterministic tests
+        run: |
+          for t in skills/*/tests/*.py; do
+            [ -e "$t" ] || continue
+            echo "== $t"
+            python3 "$t"
+          done
