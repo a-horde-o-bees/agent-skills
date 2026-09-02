@@ -24,7 +24,7 @@ Three layers gate what this repo publishes; run 1 and 2 locally before any push 
 2. **Deterministic tests** — a skill with executable scripts carries self-contained, LLM-free tests at `<skill>/tests/*.py` (stdlib-driven; fixtures inline; runnable from any cwd). CI runs every `skills/*/tests/*.py` with `python3`. Tests ship with the skill, so consumers can run them too.
 3. **Behavioral evals** — for a skill whose value is agent behavior rather than script output, the convention is a per-skill `evals/` suite (representative task + expectation, executed through a headless agent and graded deterministically where possible). Adopted per skill at graduation when warranted; not wired into CI yet.
 
-Skills are authored in `~/.claude/skills/<skill>/` and propagate here by sync — tests and evals live inside the skill folder there, never only in this repo.
+Skills are authored in `~/.claude/skills/<skill>/` and propagate here by sync — tests and evals live inside the skill folder there, never only in this repo. Authoring-time guidance for these layers (self-containment, test conventions, the evals decision) lives in the skill-authoring skill's Portability and tests section; this file owns only release-time enforcement.
 
 ## Graduating a skill
 
